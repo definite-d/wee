@@ -31,7 +31,6 @@ import platform
 import subprocess
 import argparse
 from datetime import datetime
-from pathlib import Path
 from typing import Dict, Any, Optional
 
 try:
@@ -264,13 +263,16 @@ def open_pdf(pdf_path: str):
     system = platform.system()
     
     try:
-        if system == 'Darwin':  # macOS
-            subprocess.Popen(['open', pdf_path])
-        elif system == 'Windows':
-            subprocess.Popen(['cmd', '/c', 'start', '/B', pdf_path], shell=True)
-        else:  # Linux and other Unix-like systems
-            subprocess.Popen(['xdg-open', pdf_path])
-        print(f"✓ Opened PDF in default viewer")
+        # Hide subprocess output by redirecting to dev/null
+        with open(os.devnull, 'w') as devnull:
+            if system == 'Darwin':  # macOS
+                subprocess.Popen(['open', pdf_path], stdout=devnull, stderr=devnull)
+            elif system == 'Windows':
+                subprocess.Popen(['cmd', '/c', 'start', '/B', pdf_path], 
+                              shell=True, stdout=devnull, stderr=devnull)
+            else:  # Linux and other Unix-like systems
+                subprocess.Popen(['xdg-open', pdf_path], stdout=devnull, stderr=devnull)
+        print("✓ Opened PDF in default viewer")
     except Exception as e:
         print(f"⚠ Could not open PDF automatically: {e}")
 
