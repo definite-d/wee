@@ -1,4 +1,6 @@
-# wee - High-Performance Jinja2 → HTML → WeasyPrint → PDF Renderer
+# wee
+
+> _High-Performance Jinja2 → HTML → WeasyPrint → PDF Renderer_
 
 A fast CLI tool for rendering Jinja2 templates to PDF with instant hot-reload capabilities.
 
