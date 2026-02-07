@@ -35,7 +35,7 @@ from typing import Dict, Any, Optional
 
 try:
     from jinja2 import Environment, FileSystemLoader, select_autoescape
-    from weasyprint import HTML, CSS
+    from weasyprint import HTML
 except ImportError as e:
     print(f"Error: Missing required package - {e}")
     print("\nThis is a PEP 723 script with inline dependencies.")
