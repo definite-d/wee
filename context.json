@@ -1,0 +1,11 @@
+{
+  "title": "Context Test Document",
+  "date": "2026-02-07",
+  "author": "Wee Tester",
+  "description": "This document uses external context.json file for dynamic content.",
+  "items": [
+    {"name": "Laptop", "quantity": 2, "price": 999.99},
+    {"name": "Mouse", "quantity": 5, "price": 25.50},
+    {"name": "Keyboard", "quantity": 3, "price": 75.00}
+  ]
+}
